@@ -17,9 +17,9 @@ Pretende-se ainda criar dados de teste, documentar o projeto e manter um histór
 
 ## Tecnologias
 
-Haskell
-GHC / GHCi
-Visual Studio Code
+- Haskell
+- GHC / GHCi
+- Visual Studio Code
 
 ## Execução
 
@@ -31,6 +31,6 @@ ghci main.hs
 
 ## 👥 Autores
 
-Marta Monteiro - al2025163535
-Alexandre Sousa - al2025173550
-Beatriz Belo - al2024...
+- Marta Monteiro - al2025163535
+- Alexandre Sousa - al2025173550
+- Beatriz Belo - al2024...
