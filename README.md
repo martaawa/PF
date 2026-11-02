@@ -31,19 +31,31 @@ ghci main.hs
 
 ## 🐾 Estrutura dos Dados
 
-Nesta primeira etapa, definimos dois tipos de dados:
+Nesta primeira etapa, definimos os seguintes tipos de dados:
+
+**Animais**
 
 - **Animal**: representa cada animal através de sete características: ID, Espécie, Sexo, Nome, Porte, Idade e Estado de Adoção.
 
-- **ListaDeAnimais**: representa uma lista de elementos do tipo Animal.
+- **ListaDeAnimais** : representa uma lista de elementos do tipo Animal.
 
 Criámos uma lista inicial com 30 animais de diferentes espécies, idades e características, que será utilizada para testar as funcionalidades do sistema.
 
 O Estado de Adoção é representado por um valor booleano (Bool):
 
-- True: o animal já foi adotado.
+- **True**: o animal já foi adotado.
 
-- False: o animal encontra-se disponível para adoção.
+- **False**: o animal encontra-se disponível para adoção.
+
+**Adotantes**
+
+- **Adotante**: representa cada adotante através de quatro características: Número de Cliente, Nome, Número de Telefone e Número de Adoções.
+
+- **ListaDeAdotantes**: representa uma lista de elementos do tipo Adotante.
+
+Criámos uma lista inicial com 4 adotantes, que será utilizada para testar as funcionalidades relacionadas com a gestão das adoções.
+
+Nesta lista apenas estão registadas pessoas que já realizaram pelo menos uma adoção, pelo que o número de adoções é sempre superior a zero.
 
 ## Funcionalidades Implementadas
 
