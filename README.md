@@ -33,4 +33,4 @@ ghci main.hs
 
 - Marta Monteiro - al2025163535
 - Alexandre Sousa - al2025173550
-- Beatriz Belo - al2024...
+- Beatriz Belo - al2024147689
