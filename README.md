@@ -29,6 +29,30 @@ Para carregar o projeto no GHCi:
 ghci main.hs
 ```
 
+## 🐾 Estrutura dos Dados
+
+Nesta primeira etapa, definimos dois tipos de dados:
+
+- **Animal**: representa cada animal através de sete características: ID, Espécie, Sexo, Nome, Porte, Idade e Estado de Adoção.
+
+- **ListaDeAnimais**: representa uma lista de elementos do tipo Animal.
+
+Criámos uma lista inicial com 30 animais de diferentes espécies, idades e características, que será utilizada para testar as funcionalidades do sistema.
+
+O Estado de Adoção é representado por um valor booleano (Bool):
+
+- True: o animal já foi adotado.
+
+- False: o animal encontra-se disponível para adoção.
+
+## Funcionalidades Implementadas
+
+1. Listar Animais
+
+Implementámos a função **listarAnimais**, que permite apresentar todos os animais registados no sistema.
+
+Esta função utiliza recursividade e pattern matching para percorrer a lista de animais, apresentando cada um individualmente até chegar à lista vazia.
+
 ## 👥 Autores
 
 - Marta Monteiro - al2025163535
