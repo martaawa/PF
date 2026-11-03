@@ -58,3 +58,28 @@ animalExiste _ [] = False
 animalExiste idProcurado ((Animal idA _ _ _ _ _ _):xs)
     | idProcurado == idA = True
     | otherwise = animalExiste idProcurado xs
+
+--Devolve todos os animais com o nome indicado
+procurarPorNome :: String -> ListaDeAnimais -> ListaDeAnimais
+procurarPorNome _ [] = []
+procurarPorNome n (a:as)
+    | nomeAnimal a == n = a : procurarPorNome n as
+    | otherwise         = procurarPorNome n as
+
+-- Devolve todos os animais da espécie indicada
+procurarPorEspecie :: String -> ListaDeAnimais -> ListaDeAnimais
+procurarPorEspecie _ [] = []
+procurarPorEspecie e (a:as)
+    | especie a == e = a : procurarPorEspecie e as
+    | otherwise      =  procurarPorEspecie e as
+
+-- Calcula o próximo Id livre (maior Id + 1)
+proximoId :: ListaDeAnimais -> Int
+proximoId [] = 1
+proximoId (a:as) = max (idAnimal a + 1) (proximoId as)
+
+-- Regista um animal novo: Id automático e sempre disponível
+registarAnimal :: String -> String -> String -> String -> Int -> ListaDeAnimais -> ListaDeAnimais
+registarAnimal esp sx nm pt anos lista = 
+    lista ++ [Animal (proximoId lista) esp sx nm pt anos False]
+-- Por agora, quando for para regestir um novo animal, para o procurar, é necessário usar o let no terminal: ex 'let l1 = registarAnimal "Gato" "Macho" "Simba" "Pequeno" 2 '
