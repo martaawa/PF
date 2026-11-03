@@ -1,13 +1,13 @@
 # PF
 SISTEMA DE GESTÃO DE ANIMAIS DOMÉSTICOS PARA ADOÇÃO
 
-## 📌 Sobre o projeto
+## Sobre o projeto
 
 Este repositório contém o trabalho prático desenvolvido no âmbito da Unidade Curricular de Programação Funcional, da Licenciatura em Engenharia Informática da Universidade de Trás-os-Montes e Alto Douro (UTAD).
 
 O projeto é desenvolvido em Haskell, aplicando os conceitos e técnicas de programação funcional estudados ao longo do semestre.
 
-## 🎯 Objetivos da 1.ª Fase
+## Objetivos da 1.ª Fase
 
 A primeira fase do projeto, denominada **Modelação e Núcleo Funcional**, tem como objetivo desenvolver a estrutura inicial de um sistema de gestão de animais domésticos para adoção, utilizando a linguagem Haskell.
 
