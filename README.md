@@ -59,11 +59,18 @@ Nesta lista apenas estão registadas pessoas que já realizaram pelo menos uma a
 
 ## Funcionalidades Implementadas
 
-1. Listar Animais
+**1. Listar Animais**
 
 Implementámos a função **listarAnimais**, que permite apresentar todos os animais registados no sistema.
 
 Esta função utiliza recursividade e pattern matching para percorrer a lista de animais, apresentando cada um individualmente até chegar à lista vazia.
+
+**2. Listar Adotantes**
+
+Implementámos a função **listarAdotantes**, que permite apresentar todos os adotantes registados no sistema.
+
+Tal como a função **listarAnimais**, utiliza recursividade e pattern matching para percorrer a lista de adotantes e apresentar os respetivos dados.
+
 
 ## 👥 Autores
 
