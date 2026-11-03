@@ -1,28 +1,28 @@
 # PF
-SISTEMA DE GESTÃO DE ANIMAIS DOMÉSTICOS PARA ADOÇÃO
+🐾 SISTEMA DE GESTÃO DE ANIMAIS DOMÉSTICOS PARA ADOÇÃO 🐾
 
 ## Sobre o projeto
 
-Este repositório contém o trabalho prático desenvolvido no âmbito da Unidade Curricular de Programação Funcional, da Licenciatura em Engenharia Informática da Universidade de Trás-os-Montes e Alto Douro (UTAD).
+Este projeto foi desenvolvido para a Unidade Curricular de Programação Funcional, da Licenciatura em Engenharia Informática da Universidade de Trás-os-Montes e Alto Douro (UTAD).
 
-O projeto é desenvolvido em Haskell, aplicando os conceitos e técnicas de programação funcional estudados ao longo do semestre.
+Estamos a criar um sistema em Haskell para consultar animais disponíveis para adoção e registar adoções feitas por clientes.
 
 ## Objetivos da 1.ª Fase
 
-A primeira fase do projeto, denominada **Modelação e Núcleo Funcional**, tem como objetivo desenvolver a estrutura inicial de um sistema de gestão de animais domésticos para adoção.
+Nesta primeira fase, começámos por definir os dados dos animais e dos adotantes.
 
-Nesta fase definimos tipos de dados próprios com `data` e records, organizamos o código em módulos e implementamos funções puras para consultar animais e gerir adoções, utilizando pattern matching, guards e recursividade.
+Organizámos o código em módulos e criámos funções para pesquisar animais e clientes, consultar os animais disponíveis, realizar uma adoção e calcular o total de adoções.
 
-Incluímos também dados de demonstração e testes básicos. O README documenta o funcionamento do projeto e o Git permite acompanhar o histórico de desenvolvimento do grupo.
+Utilizámos tipos de dados, listas, pattern matching, guards e recursividade. Criámos também alguns testes para verificar o funcionamento das funções.
 
-## Tecnologias
+## Ferramentas utilizadas
 
 - Haskell
 - GHCi
 - Visual Studio Code
 - Git / GitHub Desktop
 
-## Estrutura do projeto
+## Organização do projeto
 
 ```text
 PF/
@@ -39,115 +39,79 @@ PF/
     └── AdocoesTeste.hs
 ```
 
-- **Animais.hs**: definição dos animais, lista inicial, listagem e pesquisa por identificador.
-- **Adotantes.hs**: definição dos adotantes, lista inicial, listagem, pesquisa e atualização do número de adoções.
-- **Adocoes.hs**: regras de adoção, consulta de animais disponíveis e adotados e cálculo do total de adoções.
-- **Main.hs**: demonstração interativa no terminal.
-- **Testes/**: três módulos com testes básicos das funções puras.
+- **Animais.hs**: contém o tipo `Animal`, a lista de animais e funções para listar e procurar animais.
+- **Adotantes.hs**: contém o tipo `Adotante`, a lista de adotantes e funções para consultar e atualizar os seus dados.
+- **Adocoes.hs**: contém as funções relacionadas com as adoções.
+- **Main.hs**: permite experimentar o sistema no terminal.
+- **test/**: contém os três ficheiros de testes.
 
-## Execução no GHCi
+## Dados dos animais
 
-Os comandos seguintes devem ser executados na pasta principal do projeto, onde se encontram as pastas `src` e `app`.
+Criámos o tipo `Animal` com `data` e records. Os records permitem dar um nome a cada campo.
 
-Para abrir o GHCi e carregar o programa:
+Cada animal tem:
 
-```bash
-ghci -isrc app/Main.hs
-```
+- ID
+- Espécie
+- Sexo
+- Nome
+- Porte
+- Idade
+- Estado de adoção
 
-Dentro do GHCi, executar:
-
-```haskell
-main
-```
-
-O programa apresenta os animais disponíveis e o total de adoções dos adotantes registados. Depois, pede o identificador de um animal e o número de um cliente para demonstrar uma adoção.
-
-Após alterar e guardar os ficheiros, recarregar o código:
-
-```haskell
-:reload
-```
-
-Para executar novamente o programa:
-
-```haskell
-main
-```
-
-Para sair do GHCi:
-
-```haskell
-:quit
-```
-
-As alterações produzidas pela adoção são apresentadas durante a execução. Nesta fase, não são guardadas em ficheiros nem alteram as listas iniciais definidas no código.
-
-## 🐾 Estrutura dos dados
-
-### Animais
-
-**Animal** é um tipo definido com `data` e records, contendo sete campos:
-
-- `idAnimal`: identificador do animal.
-- `especie`: espécie.
-- `sexo`: sexo.
-- `nomeAnimal`: nome.
-- `porte`: porte.
-- `idade`: idade.
-- `adotado`: estado de adoção.
-
-**ListaDeAnimais** é um sinónimo de tipo definido com `type`, que representa uma lista de valores `Animal`.
-
-A lista inicial contém **30 animais** de diferentes espécies, idades e características.
-
-O estado de adoção é representado por um valor `Bool`:
+O estado de adoção é um valor `Bool`:
 
 - `True`: o animal já foi adotado.
-- `False`: o animal encontra-se disponível para adoção.
+- `False`: o animal ainda está disponível.
 
-### Adotantes
+A lista principal tem **30 animais**.
 
-**Adotante** é um tipo definido com `data` e records, contendo quatro campos:
+Também definimos `ListaDeAnimais` com `type`, para dar um nome mais simples ao tipo `[Animal]`.
 
-- `numeroCliente`: número de cliente.
-- `nomeAdotante`: nome.
-- `telefoneAdotante`: número de telefone.
-- `numeroAdocoes`: número de adoções.
+## Dados dos adotantes
 
-**ListaDeAdotantes** é um sinónimo de tipo definido com `type`, que representa uma lista de valores `Adotante`.
+Criámos o tipo `Adotante` com `data` e records.
 
-A lista inicial contém **6 adotantes**, todos com pelo menos uma adoção registada.
+Cada adotante tem:
 
-Os tipos `Animal` e `Adotante` incluem `deriving (Eq, Show)`, permitindo comparar os seus valores e apresentá-los no terminal.
+- Número de cliente
+- Nome
+- Número de telefone
+- Número de adoções
 
-O modelo atual guarda o estado de adoção de cada animal e o número de adoções de cada adotante. Ainda não guarda um histórico que associe cada animal ao respetivo adotante.
+A lista principal tem **6 adotantes**, todos com pelo menos uma adoção registada.
+
+Definimos também `ListaDeAdotantes` com `type`, para representar uma lista de adotantes.
+
+Nos dois tipos utilizámos `deriving (Eq, Show)`. Isto permite comparar os dados com `==` e apresentá-los no terminal.
+
+Nesta fase, guardamos o estado de cada animal e o número de adoções de cada cliente. Ainda não guardamos qual foi o cliente que adotou cada animal.
 
 ## Funcionalidades implementadas
 
 ### 1. Listar animais
 
-A função `listarAnimais` apresenta todos os animais de uma lista no terminal.
+A função `listarAnimais` mostra os animais no terminal.
 
-Utiliza recursividade e pattern matching para percorrer a lista, apresentando cada animal até chegar à lista vazia.
+Utiliza recursividade para percorrer a lista e apresentar um animal de cada vez, até chegar à lista vazia.
 
 ### 2. Listar adotantes
 
-A função `listarAdotantes` apresenta todos os adotantes de uma lista no terminal.
+A função `listarAdotantes` mostra os adotantes no terminal.
 
-Tal como `listarAnimais`, utiliza recursividade e pattern matching.
+Funciona de forma semelhante à função `listarAnimais`, percorrendo a lista através de recursividade.
 
-### 3. Verificar a existência de animais e clientes
+### 3. Procurar animais e clientes
 
-As funções `animalExiste` e `clienteExiste` pesquisam recursivamente um identificador nas respetivas listas.
+As funções `animalExiste` e `clienteExiste` verificam se um animal ou cliente existe na respetiva lista.
 
-Devolvem `True` quando encontram o animal ou cliente e `False` quando não o encontram.
+Recebem o identificador e devolvem `True` se o encontrarem ou `False` se não o encontrarem.
 
-### 4. Consultar o estado de adoção
+### 4. Verificar o estado de adoção
 
-A função `estaAdotado` consulta o estado de adoção de um animal através do seu identificador.
+A função `estaAdotado` verifica se um animal já foi adotado.
 
-Devolve `True` se o animal estiver adotado e `False` se estiver disponível ou se o identificador não existir na lista.
+Devolve `True` se estiver adotado e `False` se estiver disponível ou se o identificador não existir.
 
 ### 5. Consultar animais disponíveis e adotados
 
@@ -155,55 +119,138 @@ A função `obterAnimaisDisponiveis` devolve uma lista com os animais que ainda 
 
 A função `obterAnimaisAdotados` devolve uma lista com os animais que já foram adotados.
 
-As funções `listarAnimaisDisponiveis` e `listarAnimaisAdotados` apresentam essas listas no terminal.
+As funções `listarAnimaisDisponiveis` e `listarAnimaisAdotados` mostram essas listas no terminal.
 
 ### 6. Atualizar o número de adoções
 
-A função `adicionarAdocoes` acrescenta uma quantidade positiva ao número de adoções de um cliente.
+A função `adicionarAdocoes` aumenta o número de adoções de um cliente.
 
-Se a quantidade for igual ou inferior a zero, ou se o cliente não existir, a lista mantém-se inalterada.
+Se a quantidade indicada for igual ou inferior a zero, ou se o cliente não existir, a lista fica igual.
 
 ### 7. Marcar um animal como adotado
 
-A função `marcarComoAdotado` devolve uma lista em que o animal identificado passa a ter o campo `adotado` com o valor `True`.
+A função `marcarComoAdotado` coloca o estado de adoção de um animal a `True`.
 
-Os restantes animais mantêm os seus dados.
+Devolve uma nova lista com essa alteração, mantendo os dados dos restantes animais.
 
 ### 8. Realizar uma adoção
 
-A função `realizarAdocao` verifica se o animal e o cliente existem e se o animal está disponível.
+A função `realizarAdocao` verifica se o animal e o cliente existem e se o animal ainda está disponível.
 
-Quando a adoção é válida, devolve duas listas atualizadas:
+Se a adoção for válida:
 
-- O animal fica marcado como adotado.
+- O animal passa a estar adotado.
 - O número de adoções do cliente aumenta em uma unidade.
 
-Se o animal ou o cliente não existirem, ou se o animal já estiver adotado, as listas são devolvidas sem alterações.
+A função devolve as duas listas atualizadas. Se o animal ou o cliente não existirem, ou se o animal já estiver adotado, devolve as listas sem alterações.
 
 ### 9. Calcular o total de adoções
 
-A função `totalDeAdocoes` soma recursivamente os números de adoções dos adotantes registados.
+A função `totalDeAdocoes` soma o número de adoções de todos os adotantes da lista, utilizando recursividade.
 
-Este resultado corresponde ao total registado nos contadores dos adotantes, podendo ser diferente da quantidade de animais marcados como adotados na lista.
+Este total corresponde às adoções registadas nos contadores dos clientes e pode ser diferente do número de animais marcados como adotados.
+
+### Listar animais e adotantes
+
+As funções `listarAnimais` e `listarAdotantes` mostram os dados no terminal.
+
+Percorrem as listas através de recursividade, mostrando um elemento de cada vez até chegarem à lista vazia.
+
+### Procurar animais e clientes
+
+As funções `animalExiste` e `clienteExiste` verificam se um identificador existe na respetiva lista.
+
+Devolvem `True` se encontrarem o elemento e `False` se não o encontrarem.
+
+### Verificar se um animal está adotado
+
+A função `estaAdotado` consulta o estado de adoção de um animal.
+
+Devolve `True` se estiver adotado. Devolve `False` se estiver disponível ou se o ID não existir.
+
+### Consultar animais disponíveis e adotados
+
+A função `obterAnimaisDisponiveis` devolve os animais que ainda não foram adotados.
+
+A função `obterAnimaisAdotados` devolve os animais que já foram adotados.
+
+Para mostrar estas listas no terminal, usamos `listarAnimaisDisponiveis` e `listarAnimaisAdotados`.
+
+### Atualizar o número de adoções
+
+A função `adicionarAdocoes` aumenta o número de adoções de um cliente.
+
+Se a quantidade indicada for igual ou inferior a zero, ou se o cliente não existir, a lista fica igual.
+
+### Realizar uma adoção
+
+A função `realizarAdocao` verifica se o animal e o cliente existem e se o animal ainda está disponível.
+
+Se estiver tudo correto:
+
+- O animal passa a estar adotado, usando `marcarComoAdotado`.
+- O número de adoções do cliente aumenta em uma unidade.
+
+A função devolve as duas listas atualizadas. Se a adoção não for válida, devolve as listas sem alterações.
+
+### Calcular o total de adoções
+
+A função `totalDeAdocoes` soma o número de adoções de todos os clientes da lista.
+
+Este total pode ser diferente do número de animais marcados como adotados, porque os contadores dos clientes incluem adoções anteriores.
+
+## Como executar
+
+Utilizamos o GHCi para experimentar o projeto.
+
+Na pasta principal `PF`, abrir o terminal e escrever:
+
+```bash
+ghci -isrc app/Main.hs
+```
+
+Depois, dentro do GHCi:
+
+```haskell
+main
+```
+
+O programa mostra os animais disponíveis e pede o ID de um animal e o número de um cliente para realizar uma adoção.
+
+Depois de alterar e guardar o código, podemos recarregá-lo com:
+
+```haskell
+:r
+```
+
+Para executar novamente:
+
+```haskell
+main
+```
+
+Para sair:
+
+```haskell
+:q
+```
+
+Nesta fase, as alterações não são guardadas em ficheiros. Quando executamos novamente `main`, voltamos a usar as listas iniciais.
 
 ## Testes
 
-Os testes estão organizados em três módulos:
+Criámos três ficheiros de testes:
 
-- **AnimaisTeste.hs**: quantidade de animais de teste, pesquisa e comportamento com uma lista vazia.
-- **AdotantesTeste.hs**: quantidade de adotantes de teste, atualização do número de adoções e comportamento com uma lista vazia.
-- **AdocoesTeste.hs**: estado de adoção, animais disponíveis, realização de uma adoção válida e cálculo do total de adoções.
+- **AnimaisTeste.hs**: verifica a quantidade de animais, a pesquisa e uma lista vazia.
+- **AdotantesTeste.hs**: verifica a quantidade de adotantes, o aumento do número de adoções e uma lista vazia.
+- **AdocoesTeste.hs**: verifica o estado dos animais, os animais disponíveis, uma adoção válida e o total de adoções.
 
-Os dados de teste utilizam os primeiros **10 animais** e os primeiros **3 adotantes** das listas iniciais.
+Usamos **10 animais e 3 adotantes** nos testes.
 
-As nove verificações devolvem valores do tipo `Bool`. O resultado esperado é `True` em todas.
-
-### Executar os testes no GHCi
-
-Na pasta principal do projeto, abrir o GHCi com:
+Para abrir os testes no GHCi, escrever na pasta principal `PF`:
 
 ```bash
-ghci -isrc -isrc/Testes src/Testes/AdocoesTeste.hs
+ghci -isrc -itest test/AdocoesTeste.hs
 ```
 
 Depois, executar:
@@ -214,21 +261,19 @@ AdotantesTeste.testesAdotantes
 AdocoesTeste.testesAdocoes
 ```
 
-Após alterar e guardar os ficheiros de testes, utilizar `:reload` e executar novamente as funções de teste.
+Existem **9 verificações** e todas devem apresentar `True`.
 
-## Conceitos de programação funcional utilizados
+## Conceitos utilizados
 
-- Tipos de dados próprios com `data` e records.
-- Sinónimos de tipos com `type`.
-- Assinaturas explícitas nas funções.
-- Funções puras para consultar e transformar os dados.
-- Pattern matching para tratar as diferentes formas das listas e decompor os dados.
-- Guards para selecionar resultados de acordo com condições.
-- Recursividade para percorrer listas, pesquisar, selecionar e calcular totais.
-- Imutabilidade: as atualizações produzem novos valores.
-- Ações `IO` para apresentar informação e receber dados no terminal.
+- **`data` e records**: para definir os animais e os adotantes com campos com nomes.
+- **`type`**: para dar nomes aos tipos das listas.
+- **Pattern matching**: para separar os casos das listas vazias e não vazias e aceder aos dados.
+- **Guards**: para escolher o resultado de acordo com uma condição.
+- **Recursividade**: para percorrer as listas e calcular resultados.
+- **Funções puras**: para consultar e atualizar dados sem alterar as listas originais.
+- **`IO`**: para mostrar informação e receber dados no terminal.
 
-## 👥 Autores
+## Autores
 
 - Marta Monteiro - al2025163535
 - Alexandre Sousa - al2025173550
