@@ -33,13 +33,12 @@ PF/
 │   ├── Animais.hs
 │   ├── Adotantes.hs
 │   └── Adocoes.hs
-└── test/
+├── test/
 |   ├── AnimaisTeste.hs
 |   ├── AdotantesTeste.hs
 |   └── AdocoesTeste.hs
-|
-└── docs/
-|   └── Relatório.pdf
+├── docs/
+|   └── relatorio.pdf
 ```
 
 - **Animais.hs**: contém o tipo `Animal`, a lista de animais e funções para listar e procurar animais.
@@ -210,7 +209,7 @@ Nesta fase, as alterações não são guardadas em ficheiros. Quando executamos 
 
 Criámos três ficheiros de testes para verificar o funcionamento das funções implementadas na primeira fase.
 
-- **AnimaisTeste.hs**: contém a função `testesAnimais`, que realiza 6 testes. Verifica a quantidade de animais, a existência de animais através do ID, a pesquisa por nome e espécie, o cálculo do próximo ID disponível e o registo de um novo animal.
+- **AnimaisTeste.hs**: contém a função `testesAnimais`, que realiza 6 testes. Verifica a quantidade de animais, a existência de animais (incluindo numa lista vazia) através do ID, a pesquisa por nome e espécie, o cálculo do próximo ID disponível e o registo de um novo animal.
 
 - **AdotantesTeste.hs**: contém a função `testesAdotantes`, que realiza 3 testes. Verifica a quantidade de adotantes, a atualização do número de adoções de um cliente e o comportamento da função perante uma lista vazia.
 
@@ -221,7 +220,7 @@ Utilizamos **10 animais e 3 adotantes** nos testes, pois considerámos que lista
 Para abrir os testes no GHCi, escrever na pasta principal `PF`:
 
 ```bash
-ghci -isrc -itest test/AdocoesTeste.hs
+ghci -isrc -itest test/AnimaisTeste.hs test/AdotantesTeste.hs test/AdocoesTeste.hs
 ```
 
 Depois, carregar os restantes módulos de testes, caso ainda não estejam carregados:
