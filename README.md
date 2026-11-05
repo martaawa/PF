@@ -3,7 +3,7 @@
 
 ## Sobre o projeto
 
-Este projeto foi desenvolvido para a Unidade Curricular de Programação Funcional, da Licenciatura em Engenharia Informática da Universidade de Trás-os-Montes e Alto Douro (UTAD).
+Este projeto foi desenvolvido para a **Unidade Curricular de Programação Funcional**, da Licenciatura em Engenharia Informática da Universidade de Trás-os-Montes e Alto Douro (UTAD).
 
 Estamos a criar um sistema em Haskell para consultar animais disponíveis para adoção e registar adoções feitas por clientes.
 
@@ -34,9 +34,12 @@ PF/
 │   ├── Adotantes.hs
 │   └── Adocoes.hs
 └── test/
-    ├── AnimaisTeste.hs
-    ├── AdotantesTeste.hs
-    └── AdocoesTeste.hs
+|   ├── AnimaisTeste.hs
+|   ├── AdotantesTeste.hs
+|   └── AdocoesTeste.hs
+|
+└── docs/
+|   └── Relatório.pdf
 ```
 
 - **Animais.hs**: contém o tipo `Animal`, a lista de animais e funções para listar e procurar animais.
@@ -205,13 +208,15 @@ Nesta fase, as alterações não são guardadas em ficheiros. Quando executamos 
 
 ## Testes
 
-Criámos três ficheiros de testes:
+Criámos três ficheiros de testes para verificar o funcionamento das funções implementadas na primeira fase.
 
-- **AnimaisTeste.hs**: verifica a quantidade de animais, a pesquisa e uma lista vazia.
-- **AdotantesTeste.hs**: verifica a quantidade de adotantes, o aumento do número de adoções e uma lista vazia.
-- **AdocoesTeste.hs**: verifica o estado dos animais, os animais disponíveis, uma adoção válida e o total de adoções.
+- **AnimaisTeste.hs**: contém a função `testesAnimais`, que realiza 6 testes. Verifica a quantidade de animais, a existência de animais através do ID, a pesquisa por nome e espécie, o cálculo do próximo ID disponível e o registo de um novo animal.
 
-Usamos **10 animais e 3 adotantes** nos testes.
+- **AdotantesTeste.hs**: contém a função `testesAdotantes`, que realiza 3 testes. Verifica a quantidade de adotantes, a atualização do número de adoções de um cliente e o comportamento da função perante uma lista vazia.
+
+- **AdocoesTeste.hs**: contém a função `testesAdocoes`, que realiza 4 testes. Verifica o estado de adoção dos animais, a obtenção dos animais disponíveis, a realização de uma adoção válida e o cálculo do número total de adoções.
+
+Utilizamos **10 animais e 3 adotantes** nos testes, pois considerámos que listas reduzidas facilitam a verificação dos resultados.
 
 Para abrir os testes no GHCi, escrever na pasta principal `PF`:
 
@@ -219,7 +224,13 @@ Para abrir os testes no GHCi, escrever na pasta principal `PF`:
 ghci -isrc -itest test/AdocoesTeste.hs
 ```
 
-Depois, executar:
+Depois, carregar os restantes módulos de testes, caso ainda não estejam carregados:
+
+```haskell
+:add test/AnimaisTeste.hs test/AdotantesTeste.hs
+```
+
+Para executar os testes:
 
 ```haskell
 AnimaisTeste.testesAnimais
@@ -227,7 +238,7 @@ AdotantesTeste.testesAdotantes
 AdocoesTeste.testesAdocoes
 ```
 
-Existem **9 verificações** e todas devem apresentar `True`.
+Existem **13 testes**, que deverão apresentar `True` quando todas as verificações forem bem-sucedidas.
 
 ## Conceitos utilizados
 
