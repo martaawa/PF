@@ -240,44 +240,6 @@ AdocoesTeste.testesAdocoes
 
 Existem **13 testes**, que deverão apresentar `True` quando todas as verificações forem bem-sucedidas.
 
-Para abrir os testes no GHCi, escrever na pasta principal `PF`:
-
-```bash
-ghci -isrc -itest test/AdocoesTeste.hs
-```
-
-Depois, carregar os restantes módulos de testes, caso ainda não estejam carregados:
-
-```haskell
-:add test/AnimaisTeste.hs test/AdotantesTeste.hs
-```
-
-Para executar os testes:
-
-```haskell
-AnimaisTeste.testesAnimais
-AdotantesTeste.testesAdotantes
-AdocoesTeste.testesAdocoes
-```
-
-Existem **13 testes**, que deverão apresentar `True` quando todas as verificações forem bem-sucedidas.
-
-Para abrir os testes no GHCi, escrever na pasta principal `PF`:
-
-```bash
-ghci -isrc -itest test/AdocoesTeste.hs
-```
-
-Depois, executar:
-
-```haskell
-AnimaisTeste.testesAnimais
-AdotantesTeste.testesAdotantes
-AdocoesTeste.testesAdocoes
-```
-
-Existem **9 verificações** e todas devem apresentar `True`.
-
 ## Conceitos utilizados
 
 - **`data` e records**: para definir os animais e os adotantes com campos com nomes.
