@@ -82,4 +82,4 @@ proximoId (a:as) = max (idAnimal a + 1) (proximoId as)
 registarAnimal :: String -> String -> String -> String -> Int -> ListaDeAnimais -> ListaDeAnimais
 registarAnimal esp sx nm pt anos lista = 
     lista ++ [Animal (proximoId lista) esp sx nm pt anos False]
--- Por agora, quando for para regestir um novo animal, para o procurar, é necessário usar o let no terminal: ex 'let l1 = registarAnimal "Gato" "Macho" "Simba" "Pequeno" 2 '
+-- Por agora, quando for para registar um novo animal, para o procurar, é necessário usar o let no terminal: ex 'let l1 = registarAnimal "Gato" "Macho" "Simba" "Pequeno" 2 '
