@@ -150,54 +150,20 @@ A função `totalDeAdocoes` soma o número de adoções de todos os adotantes da
 
 Este total corresponde às adoções registadas nos contadores dos clientes e pode ser diferente do número de animais marcados como adotados.
 
-### Listar animais e adotantes
+### 10. Procurar animais por nome ou espécie
 
-As funções `listarAnimais` e `listarAdotantes` mostram os dados no terminal.
+As funções `procurarPorNome` e `procurarPorEspecie` devolvem uma lista com todos os animais que têm o nome ou a espécie indicados.
 
-Percorrem as listas através de recursividade, mostrando um elemento de cada vez até chegarem à lista vazia.
+Devolvem uma lista, e não um único animal, porque podem existir vários resultados (por exemplo, existem dois animais chamados Donatello). Se não houver resultados, devolvem uma lista vazia.
 
-### Procurar animais e clientes
+### 11. Registar um novo animal
 
-As funções `animalExiste` e `clienteExiste` verificam se um identificador existe na respetiva lista.
+A função `registarAnimal` acrescenta um novo animal à lista.
 
-Devolvem `True` se encontrarem o elemento e `False` se não o encontrarem.
+- O ID é atribuído automaticamente pela função `proximoId`, que calcula o maior ID existente e soma 1. Assim, nunca há IDs repetidos.
+- Um animal novo fica sempre disponível para adoção.
 
-### Verificar se um animal está adotado
-
-A função `estaAdotado` consulta o estado de adoção de um animal.
-
-Devolve `True` se estiver adotado. Devolve `False` se estiver disponível ou se o ID não existir.
-
-### Consultar animais disponíveis e adotados
-
-A função `obterAnimaisDisponiveis` devolve os animais que ainda não foram adotados.
-
-A função `obterAnimaisAdotados` devolve os animais que já foram adotados.
-
-Para mostrar estas listas no terminal, usamos `listarAnimaisDisponiveis` e `listarAnimaisAdotados`.
-
-### Atualizar o número de adoções
-
-A função `adicionarAdocoes` aumenta o número de adoções de um cliente.
-
-Se a quantidade indicada for igual ou inferior a zero, ou se o cliente não existir, a lista fica igual.
-
-### Realizar uma adoção
-
-A função `realizarAdocao` verifica se o animal e o cliente existem e se o animal ainda está disponível.
-
-Se estiver tudo correto:
-
-- O animal passa a estar adotado, usando `marcarComoAdotado`.
-- O número de adoções do cliente aumenta em uma unidade.
-
-A função devolve as duas listas atualizadas. Se a adoção não for válida, devolve as listas sem alterações.
-
-### Calcular o total de adoções
-
-A função `totalDeAdocoes` soma o número de adoções de todos os clientes da lista.
-
-Este total pode ser diferente do número de animais marcados como adotados, porque os contadores dos clientes incluem adoções anteriores.
+A lista original não é alterada: a função devolve uma nova lista com o animal acrescentado.
 
 ## Como executar
 

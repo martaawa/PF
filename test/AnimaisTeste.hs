@@ -18,3 +18,4 @@ testesAnimais :: IO ()
 testesAnimais = do
     print testeQuantidade
     print testeListaVazia
+
