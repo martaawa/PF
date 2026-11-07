@@ -1,39 +1,32 @@
 module Main where
 
-import Animais
-import Adotantes
-import Adocoes
+import Model
+import Dados
+import Domain
 
 main :: IO ()
 main = do
-    putStrLn "-- Lista de Animais Disponiveis -- :"
-    listarAnimaisDisponiveis animais
-
-    putStrLn "\n-- Total de adoções no sistema -- :"
-    print (totalDeAdocoes adotantes)
-
-    putStrLn "\n-- Realizar adocao -- :"
-
-    putStrLn "Introduza o ID do animal:"
-    idAnimal <- readLn
-
-    putStrLn "Introduza o numero do cliente:"
-    idCliente <- readLn
-
-    if not (animalExiste idAnimal animais)
-        then putStrLn "Erro: animal inexistente!"
-        else if not (clienteExiste idCliente adotantes)
-            then putStrLn "Erro: cliente inexistente!"
-            else if estaAdotado idAnimal animais
-                then putStrLn "Erro: este animal ja foi adotado!"
-                else do
-                    let (novosAnimais, novosAdotantes) = realizarAdocao idAnimal idCliente animais adotantes
-
-                    putStrLn "\n-- Novo Total de adocoes do cliente -- :"
-                    listarAdotantes novosAdotantes
-
-                    putStrLn "\n-- Animais disponiveis depois da adocao -- :"
-                    listarAnimaisDisponiveis novosAnimais
-
-                    putStrLn "\n-- Total de adocoes atualizado -- :"
-                    print (totalDeAdocoes novosAdotantes)
+    putStrLn "=================================================="
+    putStrLn "  SISTEMA DE GESTÃO DE ANIMAIS DOMÉSTICOS (UTAD)  "
+    putStrLn "=================================================="
+    putStrLn ""
+    putStrLn "1. Animais Disponíveis Inicialmente:"
+    print (obterAnimaisDisponiveis animaisIniciais)
+    putStrLn ""
+    putStrLn "2. Adotantes Registados:"
+    print adotantesIniciais
+    putStrLn ""
+    putStrLn "3. Realizar Adoção (Animal ID 1 pelo Cliente ID 1):"
+    let (novosAnimais, novosAdotantes, novasAdocoes) = 
+            realizarAdocao 1 1 animaisIniciais adotantesIniciais adocoesIniciais
+    putStrLn "Animais atualizados:"
+    print novosAnimais
+    putStrLn "Adotantes atualizados:"
+    print novosAdotantes
+    putStrLn "Registo de Adoções:"
+    print novasAdocoes
+    putStrLn ""
+    putStrLn "4. Animais Adotados pela Ana (Cliente ID 3):"
+    print (animaisDeAdotante 3 novasAdocoes)
+    putStrLn ""
+    putStrLn "=================================================="

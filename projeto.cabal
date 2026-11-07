@@ -1,0 +1,31 @@
+cabal-version:      2.4
+name:               PF
+version:            0.1.0.0
+synopsis:           Sistema de Gestao de Animais Domesticos para Adocao
+description:        Projeto da UC de Programacao Funcional (LEI - UTAD)
+author:             Marta Monteiro, Alexandre Sousa, Beatriz Belo
+maintainer:         utad
+category:           Education
+
+library
+    exposed-modules:  Model
+                    , Domain
+                    , Dados
+    hs-source-dirs:   src
+    default-language: Haskell2010
+    build-depends:    base >= 4.7 && < 5
+
+executable PF
+    main-is:          Main.hs
+    hs-source-dirs:   app
+    default-language: Haskell2010
+    build-depends:    base >= 4.7 && < 5
+                    , PF
+
+test-suite PF-test
+    type:             exitcode-stdio-1.0
+    main-is:          Spec.hs
+    hs-source-dirs:   test
+    default-language: Haskell2010
+    build-depends:    base >= 4.7 && < 5
+                    , PF
