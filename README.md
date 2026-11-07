@@ -9,36 +9,36 @@ Estamos a criar um sistema em Haskell para consultar animais disponíveis para a
 
 ## Objetivos da 1.ª Fase
 
-Nesta primeira fase, começámos por definir os dados dos animais e dos adotantes.
+Nesta primeira etapa, o objetivo consistiu em modelar a estrutura de dados e implementar as operações funcionais essenciais:
 
-Organizámos o código em módulos e criámos funções para pesquisar animais e clientes, consultar animais disponíveis, registar uma nova adoção (relacionando o animal com o cliente), consultar os animais adotados por cada cliente e calcular o total de adoções.
-
-Utilizámos tipos de dados, listas, pattern matching, guards e recursividade. Criámos também testes unitários para verificar o funcionamento de todas as funções.
+- Definição dos tipos de dados para Animais, Adotantes e Adoções (relação N:M).
+- Modularização do código em camadas (`Model`, `Domain` e `Dados`).
+- Implementação de funções de pesquisa, consulta de disponibilidade e registo de adoções.
+- Suíte de testes unitários integrados com o **Cabal**.
 
 ## Ferramentas utilizadas
 
-- Haskell
-- GHCi
-- Visual Studio Code
-- Git / GitHub Desktop
+- **Haskell** (GHC 9.10+)
+- **Cabal** (Gestor de pacotes e build tool)
+- **Visual Studio Code**
+- **Git / GitHub**
 
 ## Organização do projeto
 
 ```text
 PF/
+├── PF.cabal
+├── cabal.project
+├── .gitignore
 ├── README.md
+├── src/
+│   ├── Model.hs
+│   ├── Domain.hs
+│   └── Dados.hs
 ├── app/
 │   └── Main.hs
-├── src/
-│   ├── Animais.hs
-│   ├── Adotantes.hs
-│   └── Adocoes.hs
-├── test/
-|   ├── AnimaisTeste.hs
-|   ├── AdotantesTeste.hs
-|   └── AdocoesTeste.hs
-├── docs/
-|   └── relatorio.pdf
+└── test/
+    └── Spec.hs
 ```
 
 - **Animais.hs**: contém o tipo `Animal`, a lista de animais e funções para listar e procurar animais.
